@@ -24,6 +24,7 @@ use Apxiaoxv\Modules\Commands\MigrateRollbackCommand;
 use Apxiaoxv\Modules\Commands\MigrateStatusCommand;
 use Apxiaoxv\Modules\Commands\MigrationMakeCommand;
 use Apxiaoxv\Modules\Commands\ModelMakeCommand;
+use Apxiaoxv\Modules\Commands\ModuleDeleteCommand;
 use Apxiaoxv\Modules\Commands\ModuleMakeCommand;
 use Apxiaoxv\Modules\Commands\NotificationMakeCommand;
 use Apxiaoxv\Modules\Commands\PolicyMakeCommand;
@@ -67,6 +68,7 @@ class ConsoleServiceProvider extends ServiceProvider
         RouteProviderMakeCommand::class,
         InstallCommand::class,
         ListCommand::class,
+        ModuleDeleteCommand::class,
         ModuleMakeCommand::class,
         FactoryMakeCommand::class,
         PolicyMakeCommand::class,
