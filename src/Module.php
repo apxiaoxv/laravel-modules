@@ -349,6 +349,16 @@ abstract class Module
     }
 
     /**
+     * Determine whether the current module install.
+     *
+     * @return bool
+     */
+    public function isInstall()
+    {
+        return $this->files->exists(config('modules.paths.install_lock') . '/' . $this->getLowerName().'.lock'); 
+    }
+
+    /**
      * Set active state for current module.
      *
      * @param bool $active

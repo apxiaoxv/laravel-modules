@@ -285,6 +285,32 @@ abstract class FileRepository implements RepositoryInterface, Countable
      *
      * @return array
      */
+    public function getAllOrdered($direction = 'asc') : array
+    {
+        $modules = $this->all();
+
+        uasort($modules, function (Module $a, Module $b) use ($direction) {
+            if ($a->get('order') === $b->get('order')) {
+                return 0;
+            }
+
+            if ($direction === 'desc') {
+                return $a->get('order') < $b->get('order') ? 1 : -1;
+            }
+
+            return $a->get('order') > $b->get('order') ? 1 : -1;
+        });
+
+        return $modules;
+    }
+
+    /**
+     * Get all ordered modules.
+     *
+     * @param string $direction
+     *
+     * @return array
+     */
     public function getOrdered($direction = 'asc') : array
     {
         $modules = $this->allEnabled();
@@ -548,6 +574,14 @@ abstract class FileRepository implements RepositoryInterface, Countable
     public function isDisabled(string $name) : bool
     {
         return !$this->isEnabled($name);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isInstall(string $name) : bool
+    { 
+        return $this->files->exists($this->config('paths.install_lock') . '/' . strtolower($name).'.lock');  
     }
 
     /**

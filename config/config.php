@@ -71,6 +71,18 @@ return [
         */
 
         'modules' => base_path('Modules'),
+
+        /*
+        |--------------------------------------------------------------------------
+        | Modules path
+        |--------------------------------------------------------------------------
+        |
+        | This path used for save the generated module. This path also will be added
+        | automatically to list of scanned folders.
+        |
+        */
+        "install_lock" => storage_path("install_lock"),
+        
         /*
         |--------------------------------------------------------------------------
         | Modules assets path

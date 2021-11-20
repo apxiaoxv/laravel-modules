@@ -63,6 +63,15 @@ interface RepositoryInterface
      */
     public function count();
 
+
+    /**
+     * Get all ordered modules.
+     * @param string $direction
+     * @return mixed
+     */
+    public function getAllOrdered($direction = 'asc');
+
+
     /**
      * Get all ordered modules.
      * @param string $direction
@@ -176,4 +185,12 @@ interface RepositoryInterface
      * @throws ModuleNotFoundException
      */
     public function isDisabled(string $name) : bool;
+
+    /**
+     * Determine whether the given module is not install.
+     * @param string $name
+     * @return bool
+     * @throws ModuleNotFoundException
+     */
+    public function isInstall(string $name) : bool;
 }
